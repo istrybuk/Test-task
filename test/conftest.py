@@ -67,56 +67,56 @@ def add_database(connection):
     return cursor
 
 
-@pytest.fixture(scope='function', autouse=True)
-def fill_database(add_database):
-    db = add_database
-    cursor = db.cursor()
-    """ Таблица Ships"""
-    """Диапазон значений для параметров: 1-200"""
-    for i in range(1, 201):
-        name_ship = "Ship-" + str(i)
-        name_weapon = "Weapon-" + str(i)
-        name_hull = "Hull-" + str(i)
-        name_engine = "Engine-" + str(i)
-        cursor.execute("INSERT INTO Ships VALUES (?, ?, ?, ?)", (
-            name_ship, name_weapon, name_hull, name_engine))
-        db.commit()
-
-    """ Таблица weapons"""
-    """Диапазон значений для целочисленных параметров: 1-20"""
-    for i in range(1, 21):
-        weapon_of_weapons = "Weapon-" + str(i)
-        vl_reload_speed = val_random_to_20()
-        vl_rotational_speed = val_random_to_20()
-        vl_diameter = val_random_to_20()
-        vl_power_volley = val_random_to_20()
-        vl_count = val_random_to_20()
-        cursor.execute("INSERT INTO weapons VALUES (?, ?, ?, ?, ?, ?)", (
-            weapon_of_weapons, vl_reload_speed, vl_rotational_speed, vl_diameter, vl_power_volley, vl_count))
-        db.commit()
-
-    """ Таблица engines"""
-    """Диапазон значений для целочисленных параметров: 1-6"""
-    for i in range(1, 7):
-        engine_of_engines = "Engine-" + str(i)
-        vl_power = val_random_to_20()
-        vl_type_of_engines = val_random_to_20()
-        cursor.execute("INSERT INTO engines VALUES (?, ?, ?)", (
-            engine_of_engines, vl_power, vl_type_of_engines))
-        db.commit()
-
-    """ Таблица hulls"""
-    """Диапазон значений для целочисленных параметров: 1-5"""
-    for i in range(1, 6):
-        hull_of_hulls = "Hull-" + str(i)
-        vl_armor = val_random_to_20()
-        vl_type_of_hulls = val_random_to_20()
-        vl_capacity = val_random_to_20()
-        cursor.execute("INSERT INTO hulls VALUES (?, ?, ?, ?)", (
-            hull_of_hulls, vl_armor, vl_type_of_hulls, vl_capacity))
-        db.commit()
-        cursor.close()
-        # db.close()
+# @pytest.fixture(scope='function', autouse=True)
+# def fill_database(add_database):
+#     db = add_database
+#     cursor = db.cursor()
+#     """ Таблица Ships"""
+#     """Диапазон значений для параметров: 1-200"""
+#     for i in range(1, 201):
+#         name_ship = "Ship-" + str(i)
+#         name_weapon = "Weapon-" + str(i)
+#         name_hull = "Hull-" + str(i)
+#         name_engine = "Engine-" + str(i)
+#         cursor.execute("INSERT INTO Ships VALUES (?, ?, ?, ?)", (
+#             name_ship, name_weapon, name_hull, name_engine))
+#         db.commit()
+#
+#     """ Таблица weapons"""
+#     """Диапазон значений для целочисленных параметров: 1-20"""
+#     for i in range(1, 21):
+#         weapon_of_weapons = "Weapon-" + str(i)
+#         vl_reload_speed = val_random_to_20()
+#         vl_rotational_speed = val_random_to_20()
+#         vl_diameter = val_random_to_20()
+#         vl_power_volley = val_random_to_20()
+#         vl_count = val_random_to_20()
+#         cursor.execute("INSERT INTO weapons VALUES (?, ?, ?, ?, ?, ?)", (
+#             weapon_of_weapons, vl_reload_speed, vl_rotational_speed, vl_diameter, vl_power_volley, vl_count))
+#         db.commit()
+#
+#     """ Таблица engines"""
+#     """Диапазон значений для целочисленных параметров: 1-6"""
+#     for i in range(1, 7):
+#         engine_of_engines = "Engine-" + str(i)
+#         vl_power = val_random_to_20()
+#         vl_type_of_engines = val_random_to_20()
+#         cursor.execute("INSERT INTO engines VALUES (?, ?, ?)", (
+#             engine_of_engines, vl_power, vl_type_of_engines))
+#         db.commit()
+#
+#     """ Таблица hulls"""
+#     """Диапазон значений для целочисленных параметров: 1-5"""
+#     for i in range(1, 6):
+#         hull_of_hulls = "Hull-" + str(i)
+#         vl_armor = val_random_to_20()
+#         vl_type_of_hulls = val_random_to_20()
+#         vl_capacity = val_random_to_20()
+#         cursor.execute("INSERT INTO hulls VALUES (?, ?, ?, ?)", (
+#             hull_of_hulls, vl_armor, vl_type_of_hulls, vl_capacity))
+#         db.commit()
+#         cursor.close()
+#         # db.close()
 
 # @pytest.fixture()
 # def update_random_value():
