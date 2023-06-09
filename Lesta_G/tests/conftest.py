@@ -1,4 +1,4 @@
-# import pytest
+import pytest
 import sqlite3 as sql
 import random
 
@@ -12,21 +12,24 @@ def val_random_to_200():
 
 
 name_db = f"{val_random_to_200()}.db"
-print(name_db)
-
-# @pytest.fixture(scope="session")
-# def connection():
-#     """Подключение к БД перед тестами, отключение после."""
-#     db = sql.connect(name_db)
-#     cursor = db.cursor()
-#     yield db, cursor
-#     cursor.close()
-#     db.close()
 
 
-def add_database():
+@pytest.fixture(scope="session")
+def db_connection():
+    """Подключение к БД перед тестами, отключение после."""
     db = sql.connect(name_db)
+    print(f"\n Создана база данных: {name_db}")
     cursor = db.cursor()
+
+    yield db, cursor
+
+    cursor.close()
+    db.close()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def create_database(db_connection):
+    db, cursor = db_connection
 
     query = """
     CREATE TABLE IF NOT EXISTS Ships(
@@ -51,13 +54,12 @@ def add_database():
         FOREIGN KEY (engine) REFERENCES Ships(engine)
     );
     CREATE TABLE IF NOT EXISTS hulls(
-    hull TEXT PRIMARY KEY,
-    armor INTEGER NOT NULL,
-    type INTEGER NOT NULL,
-    capacity INTEGER NOT NULL,
-    FOREIGN KEY (hull) REFERENCES Ships(hull)
-    )
-    """
+        hull TEXT PRIMARY KEY,
+        armor INTEGER NOT NULL,
+        type INTEGER NOT NULL,
+        capacity INTEGER NOT NULL,
+        FOREIGN KEY (hull) REFERENCES Ships(hull)
+    )"""
     cursor.executescript(query)
 
     """ Таблица Ships"""
@@ -68,7 +70,6 @@ def add_database():
         name_hull = f"Hull-{i}"
         name_engine = f"Engine-{i}"
         cursor.execute("INSERT INTO Ships VALUES (?, ?, ?, ?)", (name_ship, name_weapon, name_hull, name_engine))
-        db.commit()
 
     """ Таблица weapons"""
     """Диапазон значений для целочисленных параметров: 1-20"""
@@ -81,7 +82,6 @@ def add_database():
         vl_count = val_random_to_20()
         cursor.execute("INSERT INTO weapons VALUES (?, ?, ?, ?, ?, ?)", (
             weapon_of_weapons, vl_reload_speed, vl_rotational_speed, vl_diameter, vl_power_volley, vl_count))
-        db.commit()
 
     """ Таблица engines"""
     """Диапазон значений для целочисленных параметров: 1-6"""
@@ -91,7 +91,6 @@ def add_database():
         vl_type_of_engines = val_random_to_20()
         cursor.execute("INSERT INTO engines VALUES (?, ?, ?)", (
             engine_of_engines, vl_power, vl_type_of_engines))
-        db.commit()
 
     """ Таблица hulls"""
     """Диапазон значений для целочисленных параметров: 1-5"""
@@ -102,16 +101,12 @@ def add_database():
         vl_capacity = val_random_to_20()
         cursor.execute("INSERT INTO hulls VALUES (?, ?, ?, ?)", (
             hull_of_hulls, vl_armor, vl_type_of_hulls, vl_capacity))
-        db.commit()
-    cursor.close()
-    db.close()
-
-# @pytest.mark.parametrize("table_name", ["weapons", "hulls", "engines"])
-# def test_component_changes(connection, table_name):
+    db.commit()
 
 
-def update_random_value():
-    db = sql.connect(name_db)
+@pytest.fixture(scope="function")
+def update_database(db_connection):
+    db, cursor_old = db_connection
     memory_db = sql.connect(':memory:')
     db.backup(memory_db)
     cursor = memory_db.cursor()
@@ -120,7 +115,6 @@ def update_random_value():
     """Диапазон значений для параметров: 1-200"""
     # база до изменения
     data = cursor.execute("SELECT * FROM Ships").fetchall()
-    print(data[:3])
 
     # список названий колонок
     names_s = list(map(lambda x: x[0], cursor.description))
@@ -138,20 +132,15 @@ def update_random_value():
             new_value = f"{column_value[0]}-{val_random_to_200()}"
             cursor.execute(f"UPDATE Ships SET {random_other_name} = '{new_value}' WHERE {first_names} = '{first_col}'")
             memory_db.commit()
-    data = cursor.execute("SELECT * FROM Ships").fetchall()
-    print(data[:3])
 
     """ Таблица hulls"""
     """Диапазон значений для целочисленных параметров: 1-20"""
     original_ship = cursor.execute("SELECT * FROM hulls").fetchall()
-    print(original_ship)
     random_name_colum = random.choice([description[0] for description in cursor.description][1:])
     for one_col in original_ship:
         new_name = one_col[0]
         cursor.execute(f"UPDATE hulls SET {random_name_colum} = {val_random_to_20()} WHERE hull = '{new_name}'")
         memory_db.commit()
-    modified_ship = cursor.execute("SELECT * FROM hulls").fetchall()
-    print(modified_ship)
 
     """ Таблица engines"""
     """Диапазон значений для целочисленных параметров: 1-20"""
@@ -161,7 +150,6 @@ def update_random_value():
         new_name = one_col[0]
         cursor.execute(f"UPDATE engines SET {random_name_colum} = {val_random_to_20()} WHERE engine = '{new_name}'")
         memory_db.commit()
-    # modified_ship = cursor.execute("SELECT * FROM engines").fetchall()
 
     """ Таблица weapons"""
     """Диапазон значений для целочисленных параметров: 1-20"""
@@ -171,13 +159,7 @@ def update_random_value():
         new_name = one_col[0]
         cursor.execute(f"UPDATE weapons SET {random_name_colum} = {val_random_to_20()} WHERE weapon = '{new_name}'")
         memory_db.commit()
-    # modified_ship = cursor.execute("SELECT * FROM weapons").fetchall()
-    # assert original_ship == modified_ship
+    return cursor, cursor_old
 
     cursor.close()
     memory_db.close()
-    db.close()
-
-
-add_database()
-update_random_value()
