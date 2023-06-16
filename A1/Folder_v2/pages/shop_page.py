@@ -4,14 +4,14 @@ import random
 
 
 def search_value_in_elements(lst=None, param=None):
-    if lst is None:
-        return print("Параметры поиска не заданы")
-    else:
-        for string in lst:
-            if param in string.text:
-                return string
-        else:
-            print(f"Искомый элемент: \"{param}\" функции search_value_in_elements, не найден.")
+    if not lst or not param:
+        print("\n В функцию search_value_in_elements() не передаются параметры поиска")
+        return None
+    for string in lst:
+        if param in string.text:
+            return string
+    print(f"\n Искомый элемент: \"{param}\" функцией search_value_in_elements() не найден.")
+    return None
 
 
 class ShopPageLocators:
