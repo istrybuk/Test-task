@@ -1,4 +1,4 @@
-from Folder_v2.pages.shop_page import *
+from folder_v2.pages.shop_page import *
 
 
 def test_buy_phone_payment_6_months(browser):
