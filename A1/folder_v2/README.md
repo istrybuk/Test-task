@@ -7,4 +7,4 @@
 6.	Внедрить функцию подсчета времени отклика с момента нажатия кнопки «Перейти к покупке» из п. 2 до появления формы, содержащей ценовое условие, из пункта 3. Вывести в консоль значение после прогона теста.
 
 
-![test_running]([image_url](https://github.com/istrybuk/Test-task/blob/main/A1/folder_v2/program_execution.PNG)https://github.com/istrybuk/Test-task/blob/main/A1/folder_v2/program_execution.PNG)
+![test_running](https://github.com/istrybuk/Test-task/blob/main/A1/folder_v2/program_execution.PNG?raw=true)
