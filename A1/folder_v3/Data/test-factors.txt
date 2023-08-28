@@ -1,0 +1,18 @@
+
+
+Type1: POST, off
+Type2: EM, off
+Format 1a: PBF, PBP, PMF, PMP, RTRN, PBFWOCD, PMFWOCD, PMPWOCD, PBPWOCD, off
+Format2a: PDF, off
+Format2b: XLS7, XLS7br, off
+Format2c: TXT, off
+
+IF [Type1] = "off"
+  THEN [Format 1a] = "off";
+
+If  [Type2] = "EM"
+ THEN [Format2a] = "PDF";
+
+IF [Type2] = "off"
+  THEN [Format2a] = "off" and [Format2b] = "off" and [Format2c] = "off";
+
