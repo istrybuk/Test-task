@@ -3,7 +3,7 @@
 ![Header](https://github.com/istrybuk/Test-task/blob/main/A1/folder_v3/Screenshots/app.png)
 
 
-В процессе изучения документации был разобран функционал и составлена карта
+В процессе изучения документации был разобран функционал и составлена [карта](https://github.com/istrybuk/Test-task/blob/main/A1/folder_v3/Screenshots/)
 
 ![Header](https://github.com/istrybuk/Test-task/blob/main/A1/folder_v3/Screenshots/map.PNG)
 
