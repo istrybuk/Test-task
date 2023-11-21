@@ -11,6 +11,6 @@
 3. Зафиксируйте результаты тестирования в виде отчетов об ошибках: название, описание, шаги для воспроизведения,
 фактический и ожидаемые результаты, приложения при необходимости.
 
-[NikaGames/project_lost_souls.xlsx](https://github.com/istrybuk/Test-task/blob/main/NikaGames/project_lost_souls.xlsx) - Отчета об ошибках.
+[NikaGames/project_lost_souls.xlsx](https://github.com/istrybuk/Test-task/blob/main/NikaGames/project_lost_souls.xlsx) - Отчет об ошибках.
 
 [NikaGames/attachment/](https://github.com/istrybuk/Test-task/tree/main/NikaGames/attachment) - Скриншоты и видео для отчета об ошибках.
