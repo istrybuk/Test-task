@@ -1,6 +1,6 @@
 # Игра для ПК Lost Souls
 
-Тестовое задание по автоматизации тестирования UI. [Test task](https://github.com/istrybuk/Automation_Testing/blob/main/Test_UI/demoqa.com-text-box/Python%20Test%20Task.txt)
+Тестовое задание по Software Testing Engineer. [Test task](https://github.com/istrybuk/Test-task/blob/main/NikaGames/Тестовое%20задание%20тестировщик.pdf)
 
 **Описание задачи:**
 
