@@ -1,6 +1,6 @@
 # Игра для ПК Lost Souls
 
-Тестовое задание по Software Testing Engineer. [Test task](https://github.com/istrybuk/Test-task/blob/main/NikaGames/Тестовое%20задание%20тестировщик.pdf)
+Тестовое задание Software Testing Engineer. [Test task](https://github.com/istrybuk/Test-task/blob/main/NikaGames/Тестовое%20задание%20тестировщик.pdf)
 
 **Описание задачи:**
 
