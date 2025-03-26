@@ -16,4 +16,4 @@ ON PT.passenger = P.id
 WHERE T.id = 7771
 ```
 
-![Скриншот](https://github.com/istrybuk/Test-task/blob/main/Patres/sql/sql.jpg))
+![sql.jpg](https://github.com/istrybuk/Test-task/blob/main/Patres/sql/sql.jpg)
