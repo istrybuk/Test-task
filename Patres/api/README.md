@@ -8,66 +8,63 @@
 * POST /posts — создать пост.
 * DELETE /posts/1 — удалить пост.
 
-3. Автотесты на Python:
-   
-  - Напишите 2 теста через pytest + requests:
-    * Успешное создание поста.
-    * Успешное изменение поста.
-    * Успешное удаление поста.
+#### 3. Автотесты на Python:
+* Напишите 2 теста через pytest + requests:
+  * Успешное создание поста.
+  * Успешное изменение поста.
+  * Успешное удаление поста.
 
+## Описание проекта для GitHub: Тестирование REST API JSONPlaceholder
+#### Название проекта
+REST API Testing with JSONPlaceholder (Python, pytest)
 
+#### Описание
+Этот проект содержит набор автотестов для проверки работы публичного REST API сервиса JSONPlaceholder. Тесты написаны на Python с использованием библиотек ```pytest``` и ```requests```, а также инструмента ```allure``` для создания отчетов.
 
+#### Особенности
+- Использование фикстур pytest для организации тестового кода
+- Поддержка генерации отчетов Allure
+- Чистая и модульная структура проекта
+- Подробные проверки статус-кодов и структуры ответов
 
+#### Технологии
+- Python 3.x
+- pytest (для тестового фреймворка)
+- requests (для HTTP-запросов)
+- allure-python-commons (для отчетов)
+- JSONPlaceholder (фейковый REST API для тестирования)
 
-## SauceDemo UI Automation Test Project
-#### This project provides automated UI tests for the SauceDemo website using Python, Selenium, and Pytest with Page Object Model pattern.
-
-### Project Structure
+### Структура проекта
 ```
-sauce-demo-tests/
-├── pages/                  # Page Object classes
-│   ├── login_page.py
-│   └── inventory_page.py
-├── tests/                  # Test cases
-│   ├── test_login.py
-│   └── test_logout.py
-├── conftest.py             # Pytest fixtures
-├── requirements.txt        # Dependencies
-└── README.md
+api/
+├── tests/
+│   ├── api/
+│   │   ├── fixtures_api.py    # Фикстуры для API тестов
+│   │   └── test_api.py        # Тестовые сценарии
+│   └── conftest.py            # Конфигурация pytest
+├── requirements.txt           # Зависимости Python
+└── README.md                  # Документация
 ```
 
-### Prerequisites
-* Python 3.8+
-* Chrome browser
-* ChromeDriver (automatically installed by webdriver-manager)
+### Установка и запуск
 
-### Installation
-1. Clone the repository:
-
+#### 1. Клонировать репозиторий:
 ```bash
-
-git clone https://github.com/yourusername/sauce-demo-tests.git
-cd sauce-demo-tests
+git clone https://github.com/istrybuk/Test-task/Patres.git
 ```
-2. Install dependencies:
 
-```python
-
+#### 2. Установить зависимости:
+```bash
 pip install -r requirements.txt
 ```
 
-### Running Tests
-1. Run all tests
-```python
-pytest tests/ -v
-```
-2. Run specific test file
-
-```python
-pytest tests/test_login.py -v
+#### 3. Запустить тесты:
+```bash
+pytest tests/api/test_api.py -v
 ```
 
-3. Run tests in parallel (using pytest-xdist)
-```python
-pytest tests/ -n auto  # Uses all available CPU cores
+#### 4. (Опционально) Сгенерировать отчет Allure:
+```bash
+pytest --alluredir=allure-results
+allure serve allure-results
 ```
