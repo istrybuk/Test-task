@@ -39,8 +39,7 @@ sauce-demo-tests/
 
 ```bash
 
-git clone https://github.com/istrybuk/Test-task/tree/5f0f45291caee91812e88ba0b9cdb8cc4f986f3e/Patres/ui
-cd sauce-demo-tests
+git clone https://github.com/istrybuk/Test-task/Patres/ui
 ```
 2. Install dependencies:
 
