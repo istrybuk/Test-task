@@ -39,7 +39,7 @@ sauce-demo-tests/
 
 ```bash
 
-git clone https://github.com/istrybuk/Test-task/Patres/ui
+git clone https://github.com/istrybuk/Test-task/Patres.git
 ```
 2. Install dependencies:
 
