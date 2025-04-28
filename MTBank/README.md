@@ -3,7 +3,7 @@
 
 Тестируемое приложение: [Paint 0.1.0.04.exe](https://github.com/istrybuk/Test-task/blob/main/MTBank/Тестовое%20QA.zip) `Тестовое QA.zip`
 
-`test_plan.md` - тест план 
+[`test_plan.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/test_plan.md) - тест план 
 
 `checklist.md` - пример чек-лист
 
