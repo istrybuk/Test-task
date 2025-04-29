@@ -5,10 +5,10 @@
 
 [`test_plan.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/test_plan.md) - тест план 
 
-`checklist.md` - пример чек-лист
+[`check_list.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/check_list.md) - пример чек-лист
 
-`test_case.md` - пример тест-кейса
+[`test_case.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/test_case.md) - пример тест-кейса
 
-`bag_report.md` - баг репорт по приложению
+[`bag_report.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/bag_report.md) - баг репорт по приложению
 
-`improvement.md` - предложения по улучшению
+[`improvement.md`]() - предложения по улучшению
