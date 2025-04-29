@@ -11,4 +11,4 @@
 
 [`bag_report.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/bag_report.md) - баг репорт по приложению
 
-[`improvement.md`]() - предложения по улучшению
+[`improvement.md`](https://github.com/istrybuk/Test-task/blob/main/MTBank/improvement.md) - предложения по улучшению
